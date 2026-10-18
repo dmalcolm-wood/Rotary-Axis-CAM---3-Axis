@@ -1,0 +1,9 @@
+test_finishing_starts_with_feed_down_entry_layers (test_brian_axis_selection.BrianAxisSelectionTests.test_finishing_starts_with_feed_down_entry_layers) ... ok
+test_x_mode_remains_the_default (test_brian_axis_selection.BrianAxisSelectionTests.test_x_mode_remains_the_default) ... ok
+test_y_mode_outputs_yaz_motion_without_x_words (test_brian_axis_selection.BrianAxisSelectionTests.test_y_mode_outputs_yaz_motion_without_x_words) ... ok
+test_y_time_estimate_and_derotation_use_y_as_longitudinal (test_brian_axis_selection.BrianAxisSelectionTests.test_y_time_estimate_and_derotation_use_y_as_longitudinal) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.007s
+
+OK

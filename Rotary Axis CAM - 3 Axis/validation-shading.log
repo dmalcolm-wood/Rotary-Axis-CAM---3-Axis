@@ -1,0 +1,28 @@
+test_finishing_starts_with_feed_down_entry_layers (test_brian_axis_selection.BrianAxisSelectionTests.test_finishing_starts_with_feed_down_entry_layers) ... ok
+test_x_mode_remains_the_default (test_brian_axis_selection.BrianAxisSelectionTests.test_x_mode_remains_the_default) ... ok
+test_y_mode_outputs_yaz_motion_without_x_words (test_brian_axis_selection.BrianAxisSelectionTests.test_y_mode_outputs_yaz_motion_without_x_words) ... ok
+test_y_time_estimate_and_derotation_use_y_as_longitudinal (test_brian_axis_selection.BrianAxisSelectionTests.test_y_time_estimate_and_derotation_use_y_as_longitudinal) ... ok
+Detected locale "C" with character encoding "US-ASCII", which is not UTF-8.
+Qt depends on a UTF-8 locale, and has switched to "UTF-8" instead.
+If this causes problems, reconfigure your locale. See the locale(1) manual
+for more information.
+test_controls_update_preview_clear_old_output_and_reset (test_model_setup.ModelSetupGuiTests.test_controls_update_preview_clear_old_output_and_reset) ... 2026-10-18 14:28:59.704 Python[6055:15234616] XType: Using static font registry.
+qt.qpa.fonts: Populating font family aliases took 60 ms. Replace uses of missing font family "Sans Serif" with one that exists to avoid this cost. 
+ok
+test_auto_aligns_oblique_long_geometry (test_model_setup.ModelSetupTests.test_auto_aligns_oblique_long_geometry) ... ok
+test_original_placement_and_fine_rotations (test_model_setup.ModelSetupTests.test_original_placement_and_fine_rotations) ... ok
+test_preparation_generates_same_motion_as_pre_aligned_stl (test_model_setup.ModelSetupTests.test_preparation_generates_same_motion_as_pre_aligned_stl) ... ok
+test_rotates_centres_without_distortion_or_source_mutation (test_model_setup.ModelSetupTests.test_rotates_centres_without_distortion_or_source_mutation) ... ok
+test_symmetric_auto_requires_explicit_axis (test_model_setup.ModelSetupTests.test_symmetric_auto_requires_explicit_axis) ... ok
+test_viewer_receives_prepared_vertices_and_faces (test_model_setup.ModelSetupTests.test_viewer_receives_prepared_vertices_and_faces) ... ok
+test_finishing_only_clears_previous_roughing_preview (test_optional_roughing.OptionalRoughingTests.test_finishing_only_clears_previous_roughing_preview) ... ok
+test_finishing_only_skips_roughing_and_preserves_existing_file (test_optional_roughing.OptionalRoughingTests.test_finishing_only_skips_roughing_and_preserves_existing_file) ... ok
+test_no_point_markers_and_solid_stl (test_optional_roughing.OptionalRoughingTests.test_no_point_markers_and_solid_stl) ... ok
+test_roughing_default_remains_enabled (test_optional_roughing.OptionalRoughingTests.test_roughing_default_remains_enabled) ... ok
+test_rebuild_keeps_strength_and_uses_normals (test_shading.ShadingTests.test_rebuild_keeps_strength_and_uses_normals) ... ok
+test_slider_changes_material_without_rebuilding_geometry (test_shading.ShadingTests.test_slider_changes_material_without_rebuilding_geometry) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 1.632s
+
+OK
