@@ -4,7 +4,7 @@ setlocal
 py -m pip install --upgrade pip
 if errorlevel 1 goto :failed
 
-py -m pip install -r requirements-brian.txt
+py -m pip install -r requirements-windows-build.txt
 if errorlevel 1 goto :failed
 
 py -m PyInstaller --clean --noconfirm Brian_Rotary_CAM.spec

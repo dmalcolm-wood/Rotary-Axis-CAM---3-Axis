@@ -63,3 +63,7 @@ Enabled finishing sides sample close to the STL end rather than stopping one bal
 End-face radial depth per layer uses **Entry depth / layer** and the existing finishing A-angle spacing. The cutter retracts above stock before every A index and end-to-end move. Finishing feed applies to radial cuts. The original longitudinal work zero is retained; low-end finishing can generate negative X (or Y). Review travel limits and stock placement. Roughing paths retain their original end inset; end-face cutting is included only in the finishing file.
 
 **Tapered/conical cutter warning:** ball-centre clearance does not establish clearance for the cone, shank or holder. These can contact the part during end-face cuts. No cutter-body or fixture collision checking is performed. Inspect the toolpath and cutter geometry and verify the move before machining. The same warning is shown in the application and written into generated end-face G-code.
+
+## Automated Windows builds
+
+See [Windows build, download and test instructions](../docs/WINDOWS_BUILD.md).

@@ -1,0 +1,79 @@
+name: Build Windows application
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'Rotary Axis CAM - 3 Axis/**'
+      - '.github/workflows/build-windows.yml'
+  pull_request:
+    paths:
+      - 'Rotary Axis CAM - 3 Axis/**'
+      - '.github/workflows/build-windows.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 45
+    defaults:
+      run:
+        shell: pwsh
+        working-directory: Rotary Axis CAM - 3 Axis
+    env:
+      QT_API: pyside6
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11 (64 bit)
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          architecture: x64
+          cache: pip
+          cache-dependency-path: |
+            Rotary Axis CAM - 3 Axis/requirements.txt
+            Rotary Axis CAM - 3 Axis/requirements-windows-build.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -m pip install -r requirements-windows-build.txt
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -m pip check
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -m pip freeze | Out-File -Encoding utf8 build-dependencies.txt
+
+      - name: Run existing regression tests
+        env:
+          QT_QPA_PLATFORM: offscreen
+        run: python -m unittest discover -s tests -v
+
+      - name: Build application directory
+        # --onedir is encoded by EXE(exclude_binaries=True) + COLLECT in the spec.
+        run: python -m PyInstaller --clean --noconfirm Brian_Rotary_CAM.spec
+
+      - name: Package application as ZIP
+        run: |
+          $appDir = 'dist/Rotary Axis CAM - 3 Axis'
+          if (!(Test-Path "$appDir/Rotary Axis CAM - 3 Axis.exe")) {
+            throw 'Expected application executable was not produced'
+          }
+          Copy-Item build-dependencies.txt "$appDir/build-dependencies.txt"
+          Copy-Item ../docs/WINDOWS_BUILD.md "$appDir/WINDOWS_BUILD.md"
+          # zipfile handles large archives and preserves the whole onedir layout.
+          python -c "import shutil; shutil.make_archive('dist/Rotary-Axis-CAM-3-Axis-Windows-x64', 'zip', 'dist', 'Rotary Axis CAM - 3 Axis')"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: Upload Windows ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: Rotary-Axis-CAM-3-Axis-Windows-x64
+          path: Rotary Axis CAM - 3 Axis/dist/Rotary-Axis-CAM-3-Axis-Windows-x64.zip
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 30

@@ -1,0 +1,6 @@
+# Keep the existing source dependency set; add explicit native/Qt bridge packages.
+-r requirements.txt
+vtk
+QtPy
+pyinstaller>=6.11,<7
+pyinstaller-hooks-contrib>=2025.1
